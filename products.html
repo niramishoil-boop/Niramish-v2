@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="color-scheme" content="light"/>
+<script>if('scrollRestoration' in history){history.scrollRestoration='manual';}window.scrollTo(0,0);</script>
+<title>Our Products — Niramish</title>
+<meta name="description" content="Browse Niramish cold-pressed mustard oil, pure haldi, groundnut oil and moringa powder."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;700&family=Noto+Serif+Devanagari:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+
+<script src="js/app.js"></script>
+</head>
+<body>
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>🌿 Pure Food&nbsp;|&nbsp;Healthy Families&nbsp;|&nbsp;A Better Tomorrow</span>
+    </div>
+    <div class="topbar-right">
+      <a href="https://wa.me/918376091208" target="_blank" rel="noopener">📞 +91 83760 91208</a>
+      <div class="topbar-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">ig</a>
+        <a href="#" aria-label="YouTube">yt</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <span class="leaf-icon">🌿</span>
+      <div class="nav-brand-text">
+        <span class="brand-en en">Niramish</span>
+        <span class="brand-tag">Pure by Nature</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="about.html" data-nav="about">About Us</a>
+      <a href="products.html" data-nav="products" class="active">Products</a>
+      <a href="process.html" data-nav="process">Our Process</a>
+      <a href="quality.html" data-nav="quality">Quality</a>
+      <a href="contact.html?tab=dealer" data-nav="dealers">Dealers</a>
+      <a href="#" onclick="showToast('Blog coming soon!');return false;">Blogs</a>
+      <a href="contact.html" data-nav="contact">Contact Us</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html" class="btn-primary" style="padding:10px 20px">Get Enquiry →</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <a href="index.html" class="nav-brand">
+      <span class="leaf-icon">🌿</span>
+      <div class="nav-brand-text">
+        <span class="brand-en en">Niramish</span>
+        <span class="brand-tag">Pure by Nature</span>
+      </div>
+    </a>
+    <button class="mobile-menu-close" id="menuCloseBtn" aria-label="Close">✕</button>
+  </div>
+  <nav>
+    <a class="m-link" href="index.html" data-nav="home">🏠 Home</a>
+    <a class="m-link" href="about.html" data-nav="about">🌱 About Us</a>
+    <a class="m-link active" href="products.html" data-nav="products">🛍️ Products</a>
+    <a class="m-link" href="process.html" data-nav="process">⚙️ Our Process</a>
+    <a class="m-link" href="quality.html" data-nav="quality">🛡️ Quality</a>
+    <a class="m-link" href="contact.html?tab=dealer" data-nav="dealers">🤝 Dealers</a>
+    <a class="m-link" href="#" data-nav="blogs" onclick="showToast('Blog coming soon!');return false;">📰 Blogs</a>
+    <a class="m-link" href="contact.html" data-nav="contact">📞 Contact Us</a>
+  </nav>
+  <a href="contact.html" class="btn-primary m-cta btn-block">Get Enquiry →</a>
+  <div class="m-social">
+    <a href="#" aria-label="Facebook">f</a>
+    <a href="#" aria-label="Instagram">ig</a>
+    <a href="#" aria-label="YouTube">yt</a>
+    <a href="#" aria-label="LinkedIn">in</a>
+  </div>
+</div>
+
+
+<div class="page-header">
+  <div class="container">
+    <p class="eyebrow">Our Products</p>
+    <h1 class="en">A Range of Purity for Every Need</h1>
+    <p>Choose from our range of cold-pressed oils and natural foods, crafted with care and tradition.</p>
+    <p class="breadcrumb"><a href="index.html">Home</a> / Products</p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="container">
+    <div class="filter-tabs" id="filterTabs">
+      <button class="filter-tab active" data-filter="all">All</button>
+      <button class="filter-tab" data-filter="bottles">Bottles</button>
+      <button class="filter-tab" data-filter="jars">Jars</button>
+      <button class="filter-tab" data-filter="pouches">Pouches</button>
+    </div>
+    <div class="products-grid four" id="productsGrid"></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const grid = document.getElementById('productsGrid');
+  function render(filter){
+    const list = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
+    grid.innerHTML = list.map(p => `
+      <div class="product-card">
+        <a href="product.html?id=${p.id}" class="card-img-wrap">
+          <span class="card-badge">${p.badge}</span>
+          <img src="${p.images[0]}" alt="${p.name}" loading="lazy"/>
+        </a>
+        <div class="card-body">
+          <p class="card-cat">${p.catLabel}</p>
+          <h3 class="card-name en"><a href="product.html?id=${p.id}">${p.name}</a></h3>
+          <p class="card-name-hi hi">${p.hindi}</p>
+          <p class="card-desc">${p.desc}</p>
+          <p class="card-sizes">${p.sizes.map(s=>s.label).join(' <span>|</span> ')}</p>
+          <div class="card-actions">
+            <a href="product.html?id=${p.id}" class="btn-outline">View Details →</a>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+  document.getElementById('filterTabs').addEventListener('click', e => {
+    const btn = e.target.closest('.filter-tab');
+    if(!btn) return;
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render(btn.dataset.filter);
+  });
+  const params = new URLSearchParams(location.search);
+  const initial = params.get('cat') || 'all';
+  document.querySelectorAll('.filter-tab').forEach(b => b.classList.toggle('active', b.dataset.filter === initial));
+  render(initial);
+})();
+</script>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="foot-brand-en en">Niramish</div>
+        <div class="foot-brand-tag">Pure by Nature</div>
+        <p class="foot-tagline">Farm to family — cold-pressed oils and natural foods, made the honest way, straight from Gorakhpur.</p>
+        <div class="foot-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="YouTube">yt</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="process.html">Our Process</a></li>
+          <li><a href="quality.html">Quality</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="product.html?id=mustard-oil">Kachi Ghani Mustard Oil</a></li>
+          <li><a href="product.html?id=haldi">Pure Haldi</a></li>
+          <li><a href="product.html?id=groundnut-oil">Groundnut Oil</a></li>
+          <li><a href="product.html?id=moringa">Moringa Powder</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <div class="foot-contact">
+          Vill. Barhalganj, Gorakhpur<br/>Uttar Pradesh — 273402<br/><br/>
+          <a href="https://wa.me/918376091208" target="_blank" rel="noopener">💬 WhatsApp: 83760 91208</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Niramish. All rights reserved.</span>
+      <span>Made in India 🇮🇳</span>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/918376091208" class="wa-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+
+</body>
+</html>
