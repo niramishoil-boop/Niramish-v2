@@ -19,7 +19,7 @@ const PRODUCTS = [
     ],
     desc:'Cold-pressed from handpicked black mustard seeds, retaining every drop of bold aroma and natural nutrients. No heat, no hexane — just pure golden goodness.',
     features:['Rich Aroma','High Smoke Point','Omega-3 Rich','No Additives'],
-    images:['img/mustard1.jpg','img/mustard3.jpg']
+    images:['img/mustard1.jpg']
   },
   {
     id:'haldi', name:'Pure Haldi', hindi:'शुद्ध हल्दी पाउडर',
