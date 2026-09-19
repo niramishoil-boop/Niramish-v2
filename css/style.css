@@ -219,6 +219,8 @@ button{cursor:pointer;font-family:inherit;border:none;background:none}
 .cert-badge.leaf-circle{border-radius:50%}
 .cert-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--forest)}
 .cert-card p{font-size:.74rem;color:var(--bark);margin-top:.3rem}
+.cert-view-link{display:inline-block;margin-top:.6rem;font-size:.72rem;font-weight:700;color:var(--leaf);text-decoration:none;letter-spacing:.02em}
+.cert-view-link:hover{text-decoration:underline}
 .cert-dealer-row{display:grid;grid-template-columns:1.3fr 1fr;gap:1.6rem;align-items:stretch}
 .cert-dealer-row .cert-grid{grid-template-columns:1fr 1fr}
 .cert-dealer-row .dealer-banner{height:100%}
